@@ -5,7 +5,7 @@ RUN apk update && \
     apk add --no-cache bash curl npm libc-dev binaryen
     # protoc openssl-dev protobuf-dev gcc git g++ libc-dev make binaryen
 
-RUN npm install -g sass
+RUN npm install -g sass tailwindcss
 
 # Add the WASM target
 RUN rustup target add wasm32-unknown-unknown

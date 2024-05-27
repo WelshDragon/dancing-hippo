@@ -16,7 +16,7 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/dancing-hippo.css"/>
 
         // sets the document title
-        <Title text="Welcome to Leptos"/>
+        <Title text="Leptos + Tailwindcss"/>
 
         // content for this welcome page
         <Router fallback=|| {
@@ -40,11 +40,23 @@ pub fn App() -> impl IntoView {
 #[component]
 fn HomePage() -> impl IntoView {
     // Creates a reactive value to update the button
-    let (count, set_count) = create_signal(0);
-    let on_click = move |_| set_count.update(|count| *count += 1);
+    let (value, set_value) = create_signal(0);
 
     view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
+        <main>
+            <div class="bg-gradient-to-tl from-blue-800 to-blue-500 text-white font-mono flex flex-col min-h-screen">
+                <div class="flex flex-row-reverse flex-wrap m-auto">
+                    <button on:click=move |_| set_value.update(|value| *value += 1) class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-700 border-blue-800 text-white">
+                        "+"
+                    </button>
+                    <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
+                        {value}
+                    </button>
+                    <button on:click=move |_| set_value.update(|value| *value -= 1) class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-700 border-blue-800 text-white">
+                        "-"
+                    </button>
+                </div>
+            </div>
+        </main>
     }
 }
