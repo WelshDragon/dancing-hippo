@@ -35,7 +35,7 @@ jobs:
           password: ${{secrets.GITHUB_TOKEN}}
       - name: 'Build Image'
         run: |
-          docker build . --tag ghcr.io/welshdragon/dancing-hippo:latest
-          docker push ghcr.io/welshdragon/dancing-hippo:latest
+          docker build . --tag ghcr.io/welshdragon/dancing-hippo/test:latest
+          docker push ghcr.io/welshdragon/dancing-hippo/test:latest
         
   
